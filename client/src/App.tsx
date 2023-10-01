@@ -1,9 +1,10 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { ChakraProvider } from '@chakra-ui/react';
+/* eslint "@typescript-eslint/explicit-function-return-type": "off" */
+import React from 'react'
+import logo from './logo.svg'
+import './App.css'
+import { ChakraProvider } from '@chakra-ui/react'
 
-function App() {
+function App () {
   return (
     <ChakraProvider>
       <div className="App">
@@ -23,7 +24,7 @@ function App() {
         </header>
       </div>
     </ChakraProvider>
-  );
+  )
 }
 
-export default App;
+export default App
