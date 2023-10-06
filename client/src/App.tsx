@@ -1,14 +1,18 @@
 /* eslint "@typescript-eslint/explicit-function-return-type": "off" */
 import React from 'react'
 import './App.css'
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, Text, Code } from '@chakra-ui/react'
 
 function App () {
   return (
     <ChakraProvider>
       <div className="App">
         <header className="App-header">
-          <h1>[Insert future <code>Colleague</code> app here]</h1>
+          <Text>
+            [Insert future
+            <Code bg={'gray.900'} fontSize='' fontWeight='bold' color='rgb(154, 87, 205)'> Colleague </Code>
+            app here]
+          </Text>
         </header>
       </div>
     </ChakraProvider>
