@@ -6,6 +6,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install modules
-      run: pnpm install eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin 
+      run: npm install eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin 
     - name: Run ESLint
-      run: pnpx eslint .
+      run: npx eslint .
