@@ -10,4 +10,4 @@ jobs:
     - name: Install modules
       run: npm install eslint eslint-config-react-app eslint-config-standard-with-typescript
     - name: Run ESLint
-      run: npx eslint .
+      run: npx eslint ./**
