@@ -1,11 +1,11 @@
 name: CI
 on: push
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Install modules
-      run: npm install eslint eslint-config-react-app 
+      run: pnpm install eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin 
     - name: Run ESLint
-      run: npx eslint .
+      run: pnpx eslint .
