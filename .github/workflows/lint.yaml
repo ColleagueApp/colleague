@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Go to frontend
+      run: cd ./client/
     - name: Install modules
       run: npm install eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin 
     - name: Run ESLint
