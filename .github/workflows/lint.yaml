@@ -5,11 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Go to frontend
-      run: cd ./client/
-    - name: Test(to see if I'm in client)
-      run: pwd
     - name: Install modules
       run: npm install eslint eslint-config-react-app eslint-config-standard-with-typescript
     - name: Run ESLint
-      run: npx eslint ./**
+      run: npx eslint .\client\**
