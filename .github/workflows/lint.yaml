@@ -11,7 +11,7 @@ jobs:
       with:
         version: 8
         run_install: |
-          - args: [eslint, eslint-config-react-app, eslint-config-standard-with-typescript, typescript]
+          - args: [@typescript-eslint/parser, @typescript-eslint/eslint-plugin, eslint, typescript]
     - name: Check Node version
       run: node --version
     - name: Run ESLint
