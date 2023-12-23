@@ -11,5 +11,7 @@ jobs:
         version: 8
         run_install: |
           - args: [eslint, eslint-config-react-app, eslint-config-standard-with-typescript, typescript]
+    - name: Check Node version
+      run: node --version
     - name: Run ESLint
       run: pnpx eslint ./client/ --ext .js --ext .ts
