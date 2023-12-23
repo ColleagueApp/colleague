@@ -9,9 +9,10 @@ jobs:
     - uses: pnpm/action-setup@v2
       with:
         version: 8
-        run_install: |
-          - args: [eslint, typescript, @typescript-eslint/parser, @typescript-eslint/eslint-plugin]
-    - name: Check Node version
-      run: node --version
+        run_install: false
+    - name: Install eslint
+      working-directory: ./client
+      run: pnpm install eslint eslint-config-react-app eslint-config-standard-with-typescript
     - name: Run ESLint
-      run: pnpx eslint ./client/ --ext .js --ext .ts
+      working-directory: ./client
+      run: pnpx eslint . --ext .js --ext .ts
