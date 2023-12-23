@@ -10,6 +10,6 @@ jobs:
       with:
         version: latest
         run_install: |
-          - args: [--global eslint, eslint-config-react-app, eslint-config-standard-with-typescript, typescript]
+          - args: [eslint, eslint-config-react-app, eslint-config-standard-with-typescript, typescript]
     - name: Run ESLint
       run: pnpx eslint ./client/ --ext .js --ext .ts
