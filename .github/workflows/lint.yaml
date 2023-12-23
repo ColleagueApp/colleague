@@ -1,12 +1,16 @@
 name: CI
-on: push
+on:
+ - push
+ - pull_request
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - uses: pnpm/action-setup@v2
-    - name: Install modules
-      run: pnpm install eslint eslint-config-react-app eslint-config-standard-with-typescript
+      with:
+        version: latest
+        run_install: |
+          - args: [--global, eslint, eslint-config-react-app, eslint-config-standard-with-typescript]
     - name: Run ESLint
       run: pnpx eslint ./client/ --ext .js --ext .ts
