@@ -15,7 +15,7 @@ jobs:
       run: pnpm install eslint eslint-config-react-app eslint-config-standard-with-typescript eslint-config-prettier prettier
     - name: Run ESLint
       working-directory: ./client
-      run: pnpx eslint . --ext .js --ext .ts
+      run: pnpm exec eslint . --ext .js --ext .ts
     - name: Run Prettier
       working-directory: ./client
-      run: pnpx pretier . --check
+      run: pnpm exec prettier . --check
