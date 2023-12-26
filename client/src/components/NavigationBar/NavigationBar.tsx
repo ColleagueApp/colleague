@@ -30,7 +30,6 @@ import { type IconType } from "react-icons";
 interface ProfileMenuProps {
   profileImage: string;
 }
-
 function ProfileMenu({ profileImage }: ProfileMenuProps): ReactElement {
   const colleagueColor: string = useColorModeValue(
     "colleaguePurple.500",
@@ -108,9 +107,9 @@ function NavItemList({ items }: NavItemsListProps): ReactElement {
       rounded="full"
       bg={useColorModeValue("colleaguePurple.300", "colleaguePurple.700")}
     >
-      {/* eslint-disable-next-line react/no-array-index-key */}
       {items.map(
         (item, index): ReactElement => (
+          // eslint-disable-next-line react/no-array-index-key
           <NavItem key={index} name={item.name} icon={item.icon} />
         ),
       )}
