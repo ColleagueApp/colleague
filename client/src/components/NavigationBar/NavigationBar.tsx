@@ -1,4 +1,4 @@
-import React, {type ReactElement} from "react";
+import React, { type ReactElement } from "react";
 
 import {
   Avatar,
@@ -31,7 +31,7 @@ interface ProfileMenuProps {
   profileImage: string;
 }
 
-function ProfileMenu({ profileImage } : ProfileMenuProps): ReactElement {
+function ProfileMenu({ profileImage }: ProfileMenuProps): ReactElement {
   const colleagueColor: string = useColorModeValue(
     "colleaguePurple.500",
     "colleaguePurple.300",
@@ -75,7 +75,7 @@ function SearchBar(): ReactElement {
         placeholder="Take me to my next adventure"
         rounded="full"
         bg={useColorModeValue("gray.200", "gray.800")}
-       />
+      />
       <InputRightAddon rounded="full">
         <SearchIcon color={colleagueColor} />
       </InputRightAddon>
@@ -94,14 +94,14 @@ function NavItem({ name, icon }: NavItemProps): ReactElement {
       bg="None"
       aria-label={name}
       icon={<Icon as={icon} />}
-     />
+    />
   );
 }
 
 interface NavItemsListProps {
   items: NavItemProps[];
 }
-function NavItemList({ items } : NavItemsListProps): ReactElement {
+function NavItemList({ items }: NavItemsListProps): ReactElement {
   return (
     <HStack
       spacing={0}
@@ -109,7 +109,11 @@ function NavItemList({ items } : NavItemsListProps): ReactElement {
       bg={useColorModeValue("colleaguePurple.300", "colleaguePurple.700")}
     >
       {/* eslint-disable-next-line react/no-array-index-key */}
-      {items.map((item, index): ReactElement => <NavItem key={index} name={item.name} icon={item.icon} />)}
+      {items.map(
+        (item, index): ReactElement => (
+          <NavItem key={index} name={item.name} icon={item.icon} />
+        ),
+      )}
     </HStack>
   );
 }
