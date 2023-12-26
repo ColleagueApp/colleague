@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 /* eslint "@typescript-eslint/explicit-function-return-type": "off" */
 import React from 'react'
 import './App.css'
@@ -5,7 +6,7 @@ import { ChakraProvider, Text, Code, useColorModeValue } from '@chakra-ui/react'
 import { NavBar } from './components/NavigationBar/NavigationBar'
 import theme from './theme'
 
-function App () {
+function App() {
   return (
     <ChakraProvider theme={theme}>
       <div className="App">
@@ -19,7 +20,7 @@ function App () {
         </header>
       </div>
     </ChakraProvider>
-  )
+  );
 }
 
-export default App
+export default App;
