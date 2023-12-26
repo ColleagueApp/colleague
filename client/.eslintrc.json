@@ -5,7 +5,9 @@
     },
     "extends": [
         "standard-with-typescript",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "airbnb",
+        "prettier"
     ],
     "parserOptions": {
         "ecmaVersion": "latest",

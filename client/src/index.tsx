@@ -1,3 +1,6 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable react/jsx-filename-extension */
 /* eslint @typescript-eslint/semi: 0 */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
