@@ -1,0 +1,21 @@
+name: CI
+on:
+ - pull_request
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 8
+        run_install: false
+    - name: Install ESLint and Prettier
+      working-directory: ./client
+      run: pnpm install eslint eslint-config-react-app eslint-config-standard-with-typescript eslint-config-prettier eslint-config-airbnb prettier
+    - name: Run ESLint
+      working-directory: ./client
+      run: pnpm exec eslint . --ext .js --ext .ts
+    - name: Run Prettier
+      working-directory: ./client
+      run: pnpm exec prettier . --check
