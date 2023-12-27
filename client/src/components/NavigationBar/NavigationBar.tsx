@@ -69,16 +69,18 @@ function SearchBar(): ReactElement {
     "colleaguePurple.300",
   );
   return (
-    <InputGroup rounded="full" variant="filled">
-      <Input
-        placeholder="Take me to my next adventure"
-        rounded="full"
-        bg={useColorModeValue("gray.200", "gray.800")}
-      />
-      <InputRightAddon rounded="full">
-        <SearchIcon color={colleagueColor} />
-      </InputRightAddon>
-    </InputGroup>
+    <Flex maxW="1000px" minW="300px" w="lg">
+      <InputGroup rounded="full" variant="filled">
+        <Input
+          placeholder="Take me to my next adventure"
+          rounded="full"
+          bg={useColorModeValue("gray.200", "gray.800")}
+        />
+        <InputRightAddon rounded="full">
+          <SearchIcon color={colleagueColor} />
+        </InputRightAddon>
+      </InputGroup>
+    </Flex>
   );
 }
 
@@ -144,9 +146,7 @@ export default function NavBar(): ReactElement {
             Colleague
           </Code>
         </Box>
-        <Flex maxW="1000px" minW="300px" w="md">
-          <SearchBar />
-        </Flex>
+        <SearchBar />
         <HStack
           rounded="full"
           bg={useColorModeValue("gray.200", "gray.800")}
