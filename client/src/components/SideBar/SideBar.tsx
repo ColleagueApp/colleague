@@ -85,7 +85,7 @@ function UpdatesBox({
 
   return (
     <DialogueBox title="Updates">
-      <Flex direction="column" >{friendStatus}</Flex>
+      <Flex direction="column">{friendStatus}</Flex>
     </DialogueBox>
   );
 }
