@@ -56,7 +56,7 @@ function TrendingBox({
     ),
   );
   return (
-    <DialogueBox title="Trending Near You">
+    <DialogueBox title="Trending near you">
       <Flex direction="column">{topicTags}</Flex>
     </DialogueBox>
   );
@@ -98,7 +98,7 @@ export default function SideBar({
   updateList,
 }: SideBarProps): ReactElement {
   return (
-    <Flex direction="column" p={5}>
+    <Flex direction="column">
       <UpdatesBox updateList={updateList} />
       <TrendingBox trendingHash={trendingHash} />
     </Flex>
