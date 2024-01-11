@@ -1,21 +1,38 @@
-import { Badge } from "@chakra-ui/react";
+import { Badge, type TypographyProps } from "@chakra-ui/react";
 import React, { type ReactElement } from "react";
 import colleges from "./filtered.json";
 
-// interface collegesType {
-//     name: string;
-//     address: string;
-//     city: string;
-//     state: string;
-//     zip: string;
-//     alias: string;
-//     telephone: string;
-//     naics_code: string;
-//     website: string;
-//     ipedsid: string;
-// }
+function DefaultTag({
+  text,
+  colorScheme,
+  textTransform = "uppercase",
+  fontSize = "xs",
+}: {
+  text: string;
+  colorScheme: string;
+  textTransform: TypographyProps["textTransform"];
+  fontSize: TypographyProps["fontSize"];
+}): ReactElement {
+  return (
+    <Badge
+      variant="solid"
+      px={1.5}
+      py={0.5}
+      textTransform={textTransform}
+      rounded="full"
+      colorScheme={colorScheme}
+      fontSize={fontSize}
+    >
+      {text}
+    </Badge>
+  );
+}
 
-export function yearTag(code: number, abbv: boolean = false): ReactElement {
+export function yearTag(
+  code: number,
+  abbv: boolean = false,
+  fontSize: string = "xs",
+): ReactElement {
   const color: Record<number, string> = {
     0: "gray",
     1: "blue",
@@ -41,20 +58,19 @@ export function yearTag(code: number, abbv: boolean = false): ReactElement {
     5: "4+",
   };
   return (
-    <Badge
-      p={1}
+    <DefaultTag
+      text={abbv ? textAbbv[code] : textFull[code]}
       textTransform={abbv ? "uppercase" : "unset"}
-      rounded="full"
       colorScheme={color[code]}
-    >
-      {abbv ? textAbbv[code] : textFull[code]}
-    </Badge>
+      fontSize={fontSize}
+    />
   );
 }
 
 export function studentStage(
   code: number,
   abbv: boolean = false,
+  fontSize: string = "xs",
 ): ReactElement {
   const color: Record<number, string> = {
     0: "gray",
@@ -78,19 +94,20 @@ export function studentStage(
     4: "PD",
   };
   return (
-    <Badge
-      p={1}
+    <DefaultTag
       textTransform={abbv ? "uppercase" : "unset"}
-      rounded="full"
+      text={abbv ? textAbbv[code] : textFull[code]}
       colorScheme={color[code]}
-    >
-      {abbv ? textAbbv[code] : textFull[code]}
-    </Badge>
+      fontSize={fontSize}
+    />
   );
 }
 
 // TO be modified in future update
-export function collegeByCode(code: number): ReactElement {
+export function collegeByCode(
+  code: number,
+  fontSize: string = "xs",
+): ReactElement {
   const colorOptions: string[] = [
     "gray",
     "red",
@@ -112,10 +129,12 @@ export function collegeByCode(code: number): ReactElement {
   const nameCode: number =
     (name.length * Number(name.charCodeAt(name.length - 1))) %
     colorOptions.length;
-  console.log(nameCode);
   return (
-    <Badge p={1} rounded="full" colorScheme={colorOptions[nameCode]}>
-      {name}
-    </Badge>
+    <DefaultTag
+      text={name}
+      colorScheme={colorOptions[nameCode]}
+      textTransform="capitalize"
+      fontSize={fontSize}
+    />
   );
 }

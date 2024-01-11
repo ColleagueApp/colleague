@@ -6,6 +6,8 @@ import {
   Flex,
   HStack,
   Card,
+  VStack,
+  AspectRatio,
 } from "@chakra-ui/react";
 import React, { type ReactElement } from "react";
 import {
@@ -46,30 +48,38 @@ export default function ProfileWall({
     interests,
   } = profile;
   return (
-    <Card roundedBottom="2xl" flexDirection="column">
-      <Image src={coverSource} w="100%" h="350px" objectFit="cover" />
+    <Card roundedBottom="2xl" flexDirection="column" flex={1}>
+      <AspectRatio ratio={2} maxH="40vh">
+        <Image src={coverSource} h="350px" objectFit="cover" />
+      </AspectRatio>
       <Flex>
-        <Avatar size="2xl" src={profileSource} m={3} />
-        <Flex direction="column" justifyContent="center">
-          <Heading textAlign="left">{name}</Heading>
-          <HStack>
-            {studentStage(universityLevel)}
-            {yearTag(year)}
-            {collegeByCode(Number(schoolID))}
-          </HStack>
+        <VStack m={3}>
+          <Avatar size="2xl" src={profileSource} m={1} />
           <HStack>
             <Text>{followers}</Text>
             <Text>{following}</Text>
           </HStack>
-          <Flex direction="column" textAlign="left">
-            <Text>{city}</Text>
-            <Text>{degree}</Text>
+        </VStack>
+
+        <Flex direction="column" justifyContent="center" mb={2}>
+          <Heading textAlign="left">{name}</Heading>
+          <HStack my={2} spacing={1}>
+            {studentStage(universityLevel)}
+            {yearTag(year)}
+            {collegeByCode(Number(schoolID))}
+          </HStack>
+
+          <VStack alignItems="left" textAlign="left" spacing={0}>
+            <Text as="b" fontSize="sm">
+              {degree}
+            </Text>
+            <Text fontSize="sm">{city}</Text>
             <HStack>
               {interests.map((interest) => (
-                <Text>{interest}</Text>
+                <Text fontSize="sm">{interest}</Text>
               ))}
             </HStack>
-          </Flex>
+          </VStack>
         </Flex>
       </Flex>
     </Card>

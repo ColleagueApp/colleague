@@ -1,7 +1,8 @@
-import { Flex, Grid, GridItem } from "@chakra-ui/react";
+import { Divider, Flex, Grid, GridItem } from "@chakra-ui/react";
 import React, { type ReactElement } from "react";
 import SideBar from "../../components/SideBar/SideBar";
 import ProfileWall from "../../components/ProfileWall/ProfileWall";
+import PostCard from "../../components/PostCard/PostCard";
 
 const testTrending: Array<{ topic: string; postCount: number; link: string }> =
   [
@@ -54,6 +55,10 @@ export default function ProfilePage(): ReactElement {
       <Grid templateColumns="repeat(5, 1fr)" minH="100vh" flex={1}>
         <GridItem colSpan={{ base: 5, md: 4 }} p={2.5}>
           <ProfileWall profile={testWall} />
+          <Divider my={4} />
+          <PostCard />
+          <Divider my={4} />
+          <PostCard />
         </GridItem>
         <GridItem
           colSpan={1}

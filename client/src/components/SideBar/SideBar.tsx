@@ -98,7 +98,7 @@ export default function SideBar({
   updateList,
 }: SideBarProps): ReactElement {
   return (
-    <Flex direction="column">
+    <Flex direction="column" position="sticky" maxH="100vh">
       <UpdatesBox updateList={updateList} />
       <TrendingBox trendingHash={trendingHash} />
     </Flex>
