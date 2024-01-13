@@ -63,8 +63,8 @@ function CommentBubble(): ReactElement {
   return (
     <Flex
       backgroundColor="gray.600"
-      rounded="full"
-      ml={3}
+      rounded="2xl"
+      mr={3}
       p={2}
       pr={3.5}
       flex={1}
@@ -107,18 +107,18 @@ export default function PostCard(): ReactElement {
           culpa qui officia deserunt mollit anim id est laborum.
         </Text>
         <AspectRatio ratio={4 / 3} maxH="45vh">
-          <Image src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" />
+          <Image rounded="2xl" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" />
         </AspectRatio>
       </CardBody>
       <CardFooter p={5} px={5}>
         <Flex justifyContent="space-between" flex={1}>
+          <CommentBubble />
           <HStack>
             <Button colorScheme="purple">Like</Button>
             <Button colorScheme="purple" variant="outline">
               Share
             </Button>
           </HStack>
-          <CommentBubble />
         </Flex>
       </CardFooter>
     </Card>
