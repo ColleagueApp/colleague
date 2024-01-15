@@ -5,6 +5,7 @@ import {
   MenuButton,
   MenuGroup,
   MenuList,
+  Tooltip,
 } from "@chakra-ui/react";
 import React, { type ReactElement, type PropsWithChildren } from "react";
 import { type IconType } from "react-icons";
@@ -15,13 +16,16 @@ interface NavItemProps {
 }
 function SectionIconButton({ name, icon }: NavItemProps): ReactElement {
   return (
-    <MenuButton
-      as={IconButton}
-      rounded="full"
-      bg="None"
-      aria-label={name}
-      icon={<Icon as={icon} />}
-    />
+    <Tooltip label={name} aria-label={name} openDelay={500}>
+      <MenuButton
+        as={IconButton}
+        fontSize="1.125rem"
+        rounded="full"
+        bg="None"
+        aria-label={name}
+        icon={<Icon as={icon} />}
+      />
+    </Tooltip>
   );
 }
 
@@ -37,7 +41,7 @@ export default function SectionMenu({
   return (
     <Menu>
       <SectionIconButton name={name} icon={icon} />
-      <MenuList>
+      <MenuList rounded="2xl">
         <MenuGroup title={name}>{children}</MenuGroup>
       </MenuList>
     </Menu>
