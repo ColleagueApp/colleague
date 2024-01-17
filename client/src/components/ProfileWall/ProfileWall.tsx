@@ -8,14 +8,19 @@ import {
   Card,
   VStack,
   AspectRatio,
+  Icon,
+  Button,
+  ButtonGroup,
 } from "@chakra-ui/react";
 import React, { type ReactElement } from "react";
+import { IoMdPerson, IoMdPersonAdd } from "react-icons/io";
 import {
   collegeByCode,
   studentStage,
   yearTag,
 } from "../../utils/profileHelpers";
 
+// TODO: Make this part look more organized
 interface ProfileWallProps {
   name: string;
   profileSource: string;
@@ -23,8 +28,8 @@ interface ProfileWallProps {
   universityLevel: number;
   year: number;
   schoolID: string;
+  friends: number;
   followers: number;
-  following: number;
   city: string;
   degree: string;
   interests: string[];
@@ -41,8 +46,8 @@ export default function ProfileWall({
     universityLevel,
     year,
     schoolID,
+    friends,
     followers,
-    following,
     city,
     degree,
     interests,
@@ -55,14 +60,28 @@ export default function ProfileWall({
       <Flex>
         <VStack m={3}>
           <Avatar size="2xl" src={profileSource} m={1} />
-          <HStack>
-            <Text>{followers}</Text>
-            <Text>{following}</Text>
-          </HStack>
+          <ButtonGroup rounded="full" size="sm" isAttached>
+            <Button
+              rounded="full"
+              leftIcon={<Icon as={IoMdPersonAdd} />}
+              aria-label=""
+            >
+              {friends}
+            </Button>
+            <Button
+              rounded="full"
+              rightIcon={<Icon as={IoMdPerson} />}
+              aria-label=""
+            >
+              {followers}
+            </Button>
+          </ButtonGroup>
         </VStack>
 
         <Flex direction="column" justifyContent="center" mb={2}>
-          <Heading textAlign="left">{name}</Heading>
+          <Heading textAlign="left" noOfLines={1}>
+            {name}
+          </Heading>
           <HStack my={2} spacing={1}>
             {studentStage(universityLevel)}
             {yearTag(year)}

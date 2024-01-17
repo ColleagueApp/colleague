@@ -1,4 +1,19 @@
-import { Divider, Flex, Grid, GridItem } from "@chakra-ui/react";
+import {
+  Divider,
+  Flex,
+  Grid,
+  GridItem,
+  HStack,
+  Icon,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
+} from "@chakra-ui/react";
+import { IoMdPerson, IoMdCalendar } from "react-icons/io";
+import { PiSignpostFill } from "react-icons/pi";
 import React, { type ReactElement } from "react";
 import SideBar from "../../components/SideBar/SideBar";
 import ProfileWall from "../../components/ProfileWall/ProfileWall";
@@ -29,8 +44,8 @@ const testWall: {
   universityLevel: number;
   year: number;
   schoolID: string;
+  friends: number;
   followers: number;
-  following: number;
   city: string;
   degree: string;
   interests: string[];
@@ -42,8 +57,8 @@ const testWall: {
   universityLevel: 1,
   year: 3,
   schoolID: "2939",
-  followers: 456,
-  following: 555,
+  friends: 456,
+  followers: 555,
   city: "Salt Lake City, UT",
   degree: "Film B.F.A",
   interests: ["Rock Climbing", "Acting"],
@@ -51,14 +66,43 @@ const testWall: {
 
 export default function ProfilePage(): ReactElement {
   return (
-    <Flex flex={1} direction="column" justifyContent="center" maxW="177vh">
+    <Flex flex={1} direction="column" justifyContent="center" maxW="125vh">
       <Grid templateColumns="repeat(5, 1fr)" minH="100vh" flex={1}>
         <GridItem colSpan={{ base: 5, md: 4 }} p={2.5}>
           <ProfileWall profile={testWall} />
           <Divider my={4} />
-          <PostCard />
-          <Divider my={4} />
-          <PostCard />
+          <Tabs align="center" variant="soft-rounded" rounded="2xl">
+            <TabList>
+              <Tab>
+                <HStack spacing={1}>
+                  <Icon as={IoMdPerson} />
+                  <Text>Profile</Text>
+                </HStack>
+              </Tab>
+              <Tab>
+                <HStack spacing={1}>
+                  <Icon as={PiSignpostFill} />
+                  <Text>Posts</Text>
+                </HStack>
+              </Tab>
+              <Tab>
+                <HStack spacing={1}>
+                  <Icon as={IoMdCalendar} />
+                  <Text>Events</Text>
+                </HStack>
+              </Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel />
+              <TabPanel>
+                <Flex direction="column">
+                  <PostCard />
+                  <Divider my={4} />
+                  <PostCard />
+                </Flex>
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
         </GridItem>
         <GridItem
           colSpan={1}
