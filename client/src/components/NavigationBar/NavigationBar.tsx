@@ -64,7 +64,7 @@ export default function NavBar(): ReactElement {
               )
             }
           />
-          <ProfileMenu profileImage="https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80fReactElement9636ba24f7a4a9" />
+          <ProfileMenu profileImage="https://64.media.tumblr.com/dca16e78cc2be80e750eeff2aff26e5a/3fa5888d0886a893-53/s500x750/1ed940c9f8b3e75e5d4b2d36c94cf4e1ee141870.jpg" />
         </HStack>
       </Flex>
     </Box>

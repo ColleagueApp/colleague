@@ -78,7 +78,7 @@ function RequestCard({
 export default function FriendsMenu(): ReactElement {
   return (
     <SectionMenu name="Friend Requests" icon={IoMdPeople}>
-      <Flex p={3} direction="column">
+      <Flex p={3} direction="column" scrollBehavior="smooth" overflowY="auto">
         <RequestCard
           name="Foo Bar"
           profileLink="/"
