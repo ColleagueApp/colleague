@@ -13,7 +13,7 @@ import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import ProfileMenu from "./ProfileMenu";
 import SearchBar from "./SearchBar";
 import FriendsMenu from "./SectionMenus/FriendsMenu";
-import OrganizationMenu from "./SectionMenus/OrganizationMenu";
+import EventMenu from "./SectionMenus/EventMenu";
 import NotificationsMenu from "./SectionMenus/NotificationsMenu";
 
 export default function NavBar(): ReactElement {
@@ -49,7 +49,7 @@ export default function NavBar(): ReactElement {
             bg={useColorModeValue("colleaguePurple.300", "colleaguePurple.700")}
           >
             <FriendsMenu />
-            <OrganizationMenu />
+            <EventMenu />
             <NotificationsMenu />
           </HStack>
           <IconButton

@@ -86,7 +86,7 @@ export default function NotificationCard({
     <MenuItem rounded="2xl" p={0} key={notificationID}>
       <Flex alignItems="center" p={2} maxW="25rem">
         <Link href={`/${userID}`} _hover={{ textDecoration: "none" }}>
-          <Flex>
+          <Flex flex={1} alignItems="center">
             <Avatar src={userAvatar} />
             <Flex direction="column" alignItems="left" mx={2}>
               {isPostContent(content) ? (

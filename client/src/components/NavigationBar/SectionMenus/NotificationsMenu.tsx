@@ -1,5 +1,5 @@
 import React, { type ReactElement } from "react";
-import { FaRegBell } from "react-icons/fa6";
+import { IoMdNotifications } from "react-icons/io";
 import { Flex } from "@chakra-ui/react";
 import SectionMenu from "./SectionMenu";
 import NotificationCard from "./NotificationCard";
@@ -59,7 +59,8 @@ const TestNotification: NavNotification[] = [
       userID: "19191919",
       time: new Date(),
       postID: "91919191",
-      postText: "Ore wa monkey d. luffy",
+      postText:
+        "Ore wa monkey d. luffy blah blah blah blah blah blah vsjkhdfjk,hrfgjwseh",
       newPostID: "120902390",
     },
   },
@@ -77,7 +78,7 @@ const TestNotification: NavNotification[] = [
 ];
 export default function NotificationsMenu(): ReactElement {
   return (
-    <SectionMenu name="Notifications" icon={FaRegBell}>
+    <SectionMenu name="Notifications" icon={IoMdNotifications}>
       <Flex
         p={3}
         direction="column"
@@ -94,6 +95,7 @@ export default function NotificationsMenu(): ReactElement {
             content,
           }: NavNotification) => (
             <NotificationCard
+              key={notificationID}
               notificationID={notificationID}
               userID={userID}
               userAvatar={userAvatar}
