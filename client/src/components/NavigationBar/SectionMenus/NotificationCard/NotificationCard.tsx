@@ -17,7 +17,7 @@ import {
   isCommentReplyPostContent,
   isPostContent,
   type NavNotification,
-} from "./NotificationMenuTypes";
+} from "./NotificationCardTypes";
 
 // postMessage
 interface PostMessageProps {
@@ -51,7 +51,7 @@ function PostMessage({ userName, content }: PostMessageProps): ReactElement {
     message = `"${content.comment}"`;
   }
   return (
-    <Text noOfLines={2}>
+    <Text fontSize="sm" noOfLines={2}>
       <Text as="b">{userName}</Text>
       {action}
       <Text as="cite" noOfLines={1}>
@@ -60,13 +60,14 @@ function PostMessage({ userName, content }: PostMessageProps): ReactElement {
     </Text>
   );
 }
+
 // Birthday Message
 interface BirthdayMessageProps {
   userName: string;
 }
 function BirthdayMessage({ userName }: BirthdayMessageProps): ReactElement {
   return (
-    <Text noOfLines={2}>
+    <Text fontSize="sm" noOfLines={2}>
       Today is <Text as="b">{userName}</Text>&apos;s Birthday!
       <Text as="cite" noOfLines={1}>
         Send your well wishes!

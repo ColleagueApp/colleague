@@ -47,7 +47,7 @@ export default function ProfileMenu({
           <AvatarBadge boxSize="1.25em" bg="green.500" />
         </Avatar>
       </MenuButton>
-      <MenuList>
+      <MenuList rounded="2xl">
         {/* TODO: Connect Profile section with AuthContexts */}
         <Flex direction="column" justifyContent="center" m={3}>
           <VStack>

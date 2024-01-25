@@ -2,8 +2,8 @@ import React, { type ReactElement } from "react";
 import { IoMdNotifications } from "react-icons/io";
 import { Flex } from "@chakra-ui/react";
 import SectionMenu from "./SectionMenu";
-import NotificationCard from "./NotificationCard";
-import { type NavNotification } from "./NotificationMenuTypes";
+import NotificationCard from "./NotificationCard/NotificationCard";
+import { type NavNotification } from "./NotificationCard/NotificationCardTypes";
 
 const TestNotification: NavNotification[] = [
   {

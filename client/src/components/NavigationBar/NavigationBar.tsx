@@ -6,6 +6,7 @@ import {
   Flex,
   HStack,
   IconButton,
+  Link,
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -26,15 +27,17 @@ export default function NavBar(): ReactElement {
     <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
       <Flex h={16} alignItems="center" justifyContent="space-between">
         <Box>
-          <Code
-            rounded="full"
-            bg={useColorModeValue("gray.300", "gray.800")}
-            fontSize="2xl"
-            fontWeight="bold"
-            color={colleagueColor}
-          >
-            Colleague
-          </Code>
+          <Link href="/">
+            <Code
+              rounded="full"
+              bg={useColorModeValue("gray.300", "gray.800")}
+              fontSize="2xl"
+              fontWeight="bold"
+              color={colleagueColor}
+            >
+              Colleague
+            </Code>
+          </Link>
           {/* TODO: Replace Code Snippet with Logo */}
         </Box>
         <SearchBar />
