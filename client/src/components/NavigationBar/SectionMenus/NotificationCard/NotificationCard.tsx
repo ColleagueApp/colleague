@@ -82,6 +82,7 @@ export default function NotificationCard({
   userID,
   userAvatar,
   content,
+  time,
 }: NavNotification): ReactElement {
   return (
     <MenuItem rounded="2xl" p={0} key={notificationID}>
@@ -97,7 +98,7 @@ export default function NotificationCard({
               )}
               <HStack spacing={1} fontSize="2xs" alignItems="center">
                 <Icon as={GoClock} />
-                <Text as="cite">{content.time.toDateString()}</Text>
+                <Text as="cite">{time.toDateString()}</Text>
               </HStack>
             </Flex>
           </Flex>

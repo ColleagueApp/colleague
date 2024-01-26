@@ -12,8 +12,6 @@
 // Like Post notification content
 export interface LikePostContent {
   postID: string;
-  userID: string;
-  time: Date;
   postText: string;
 }
 // Share Post notification content
@@ -25,9 +23,7 @@ export interface SharePostContent extends LikePostContent {
 export interface CommentPostContent {
   postID: string;
   commentID: string;
-  userID: string;
   comment: string;
-  time: Date;
 }
 // Comment Reply Post notification content
 export interface CommentReplyPostContent extends CommentPostContent {
@@ -38,7 +34,6 @@ export interface CommentReplyPostContent extends CommentPostContent {
 // Birthday Content
 export interface BirthdayContent {
   birthDate: Date;
-  time: Date;
 }
 // Post Content Types
 export type PostContent =
@@ -53,6 +48,7 @@ export interface NavNotification {
   userName: string;
   userID: string;
   userAvatar: string;
+  time: Date;
   content: PostContent | BirthdayContent;
 }
 
