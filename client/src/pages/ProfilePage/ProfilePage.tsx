@@ -37,39 +37,13 @@ const testUpdates: Array<{
     profileID: "233323",
   },
 ];
-const testWall: {
-  name: string;
-  profileSource: string;
-  coverSource: string;
-  universityLevel: number;
-  year: number;
-  schoolID: string;
-  friends: number;
-  followers: number;
-  city: string;
-  degree: string;
-  interests: string[];
-} = {
-  name: "Foo Bar",
-  profileSource: "https://bit.ly/code-beast",
-  coverSource:
-    "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-  universityLevel: 1,
-  year: 3,
-  schoolID: "2939",
-  friends: 456,
-  followers: 555,
-  city: "Salt Lake City, UT",
-  degree: "Film B.F.A",
-  interests: ["Rock Climbing", "Acting"],
-};
 
 export default function ProfilePage(): ReactElement {
   return (
-    <Flex flex={1} direction="column" justifyContent="center" maxW="125vh">
+    <Flex flex={1} direction="column" justifyContent="center" maxW="133vh">
       <Grid templateColumns="repeat(5, 1fr)" minH="100vh" flex={1}>
-        <GridItem colSpan={{ base: 5, md: 4 }} p={2.5}>
-          <ProfileWall profile={testWall} />
+        <GridItem colSpan={{ base: 5, lg: 4 }} p={2.5}>
+          <ProfileWall />
           <Divider my={4} />
           <Tabs align="center" variant="soft-rounded" rounded="2xl">
             <TabList>
@@ -106,7 +80,7 @@ export default function ProfilePage(): ReactElement {
         </GridItem>
         <GridItem
           colSpan={1}
-          display={{ base: "none", md: "block" }}
+          display={{ base: "none", lg: "block" }}
           minW="300px"
           textAlign="center"
           alignContent="center"

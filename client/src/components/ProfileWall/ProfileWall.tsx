@@ -11,6 +11,10 @@ import {
   Icon,
   Button,
   ButtonGroup,
+  Tag,
+  TagLabel,
+  type ThemeTypings,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import React, { type ReactElement } from "react";
 import { IoMdPerson, IoMdPersonAdd } from "react-icons/io";
@@ -20,6 +24,12 @@ import {
   yearTag,
 } from "../../utils/profileHelpers";
 
+interface Interests {
+  interestEmoji: string;
+  interestID: string;
+  interestName: string;
+  interestColorScheme: ThemeTypings["colorSchemes"];
+}
 // TODO: Make this part look more organized
 interface ProfileWallProps {
   name: string;
@@ -32,13 +42,35 @@ interface ProfileWallProps {
   followers: number;
   city: string;
   degree: string;
-  interests: string[];
+  interests: Interests[];
 }
-export default function ProfileWall({
-  profile,
-}: {
-  profile: ProfileWallProps;
-}): ReactElement {
+
+// Helper
+function getProfilebyID(): ProfileWallProps {
+  return {
+    name: "Foo Bar",
+    profileSource: "https://bit.ly/code-beast",
+    coverSource:
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+    universityLevel: 1,
+    year: 3,
+    schoolID: "2939",
+    friends: 456,
+    followers: 555,
+    city: "Salt Lake City, UT",
+    degree: "Film B.F.A",
+    interests: [
+      {
+        interestEmoji: "🧗",
+        interestColorScheme: "yellow",
+        interestID: "109202",
+        interestName: "Rock Climbing",
+      },
+      // { emojiID: "1020", interestName: "Acting" },
+    ],
+  };
+}
+export default function ProfileWall(): ReactElement {
   const {
     name,
     profileSource,
@@ -51,9 +83,14 @@ export default function ProfileWall({
     city,
     degree,
     interests,
-  } = profile;
+  } = getProfilebyID();
   return (
-    <Card roundedBottom="2xl" flexDirection="column" flex={1}>
+    <Card
+      bg={useColorModeValue("gray.50", "gray.700")}
+      roundedBottom="2xl"
+      flexDirection="column"
+      flex={1}
+    >
       <AspectRatio ratio={2} maxH="40vh">
         <Image src={coverSource} h="350px" objectFit="cover" />
       </AspectRatio>
@@ -78,7 +115,7 @@ export default function ProfileWall({
           </ButtonGroup>
         </VStack>
 
-        <Flex direction="column" justifyContent="center" mb={2}>
+        <Flex direction="column" flex={1} justifyContent="center" mb={2}>
           <Heading textAlign="left" noOfLines={1}>
             {name}
           </Heading>
@@ -93,10 +130,29 @@ export default function ProfileWall({
               {degree}
             </Text>
             <Text fontSize="sm">{city}</Text>
-            <HStack>
-              {interests.map((interest) => (
-                <Text fontSize="sm">{interest}</Text>
-              ))}
+            <HStack fontSize="sm">
+              <Text as="b">Talks about:</Text>
+              {interests.map(
+                ({
+                  interestColorScheme,
+                  interestEmoji,
+                  interestID,
+                  interestName,
+                }) => (
+                  <Tag
+                    p={1.5}
+                    variant="subtle"
+                    rounded="full"
+                    fontSize="sm"
+                    colorScheme={interestColorScheme}
+                    id={interestID}
+                  >
+                    <TagLabel fontSize="xs">
+                      {interestName} {interestEmoji}
+                    </TagLabel>
+                  </Tag>
+                ),
+              )}
             </HStack>
           </VStack>
         </Flex>

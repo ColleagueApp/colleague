@@ -17,6 +17,7 @@ import {
   MenuList,
   Text,
   VStack,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import React, { type ReactElement } from "react";
 import { BsThreeDots } from "react-icons/bs";
@@ -63,7 +64,7 @@ function ProfileBubble(): ReactElement {
 function CommentBubble(): ReactElement {
   return (
     <Flex
-      backgroundColor="gray.600"
+      backgroundColor={useColorModeValue("gray.200", "gray.600")}
       rounded="2xl"
       mr={3}
       p={2}
