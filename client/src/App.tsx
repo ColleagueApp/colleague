@@ -2,14 +2,12 @@
 import React from "react";
 import "./App.css";
 import { ChakraProvider, Text, Code } from "@chakra-ui/react";
-import NavBar from "./components/NavigationBar/NavigationBar";
 import theme from "./theme";
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
       <div className="App">
-        <NavBar />
         <header className="App-header">
           <Text>
             [Insert future
