@@ -24,8 +24,8 @@ export default function NavBar(): ReactElement {
     "colleaguePurple.300",
   );
   return (
-    <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
-      <Flex h={16} alignItems="center" justifyContent="space-between">
+    <Flex bg={useColorModeValue("gray.100", "gray.900")} px={4} justifyContent="center">
+      <Flex flex="1" h={16} alignItems="center" justifyContent="space-between" minW="" maxW="133vh">
         <Box>
           <Link href="/">
             <Code
@@ -70,6 +70,6 @@ export default function NavBar(): ReactElement {
           <ProfileMenu profileImage="https://64.media.tumblr.com/dca16e78cc2be80e750eeff2aff26e5a/3fa5888d0886a893-53/s500x750/1ed940c9f8b3e75e5d4b2d36c94cf4e1ee141870.jpg" />
         </HStack>
       </Flex>
-    </Box>
+    </Flex>
   );
 }

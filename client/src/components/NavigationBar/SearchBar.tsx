@@ -14,8 +14,8 @@ export default function SearchBar(): ReactElement {
     "colleaguePurple.300",
   );
   return (
-    <Flex maxW="1000px" minW="300px" w="lg">
-      <InputGroup rounded="full" variant="filled">
+    <Flex>
+      <InputGroup rounded="full" variant="filled" maxW="1000px" w="lg">
         <Input
           placeholder="Take me to my next adventure"
           rounded="full"
