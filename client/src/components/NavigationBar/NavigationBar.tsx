@@ -24,8 +24,19 @@ export default function NavBar(): ReactElement {
     "colleaguePurple.300",
   );
   return (
-    <Flex bg={useColorModeValue("gray.100", "gray.900")} px={4} justifyContent="center">
-      <Flex flex="1" h={16} alignItems="center" justifyContent="space-between" minW="" maxW="133vh">
+    <Flex
+      bg={useColorModeValue("gray.100", "gray.900")}
+      px={4}
+      justifyContent="center"
+    >
+      <Flex
+        flex="1"
+        h={16}
+        alignItems="center"
+        justifyContent="space-between"
+        minW=""
+        maxW="133vh"
+      >
         <Box>
           <Link href="/">
             <Code
