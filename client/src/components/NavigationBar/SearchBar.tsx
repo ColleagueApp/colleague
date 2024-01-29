@@ -24,6 +24,7 @@ export default function SearchBar(): ReactElement {
         <InputRightAddon rounded="full">
           <SearchIcon color={colleagueColor} />
         </InputRightAddon>
+        {/* TODO: Add search suggestions */}
       </InputGroup>
     </Flex>
   );

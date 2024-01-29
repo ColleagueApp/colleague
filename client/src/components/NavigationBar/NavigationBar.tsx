@@ -11,7 +11,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
-import ProfileMenu from "./ProfileMenu";
+import ProfileMenu from "./SectionMenus/ProfileMenu";
 import SearchBar from "./SearchBar";
 import FriendsMenu from "./SectionMenus/FriendsMenu";
 import EventMenu from "./SectionMenus/EventMenu";
