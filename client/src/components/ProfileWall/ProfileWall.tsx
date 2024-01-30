@@ -57,7 +57,7 @@ function getProfilebyID(): ProfileWallProps {
     schoolID: "2939",
     friends: 456,
     followers: 555,
-    city: "Salt Lake City, UT",
+    city: "New York City Metropolitan Area",
     degree: "Film B.F.A",
     interests: [
       {
@@ -85,46 +85,29 @@ export default function ProfileWall(): ReactElement {
     interests,
   } = getProfilebyID();
   return (
-    <Card
-      bg={useColorModeValue("gray.50", "gray.700")}
-      roundedBottom="2xl"
-      flexDirection="column"
-      flex={1}
-    >
+    <Card roundedBottom="2xl" flexDirection="column" flex={1} pb={2}>
       <AspectRatio ratio={2} maxH="40vh">
         <Image src={coverSource} h="350px" objectFit="cover" />
       </AspectRatio>
-      <Flex>
-        <VStack m={3}>
-          <Avatar size="2xl" src={profileSource} m={1} />
-          <ButtonGroup rounded="full" size="sm" isAttached>
-            <Button
-              rounded="full"
-              leftIcon={<Icon as={IoMdPersonAdd} />}
-              aria-label=""
-            >
-              {friends}
-            </Button>
-            <Button
-              rounded="full"
-              rightIcon={<Icon as={IoMdPerson} />}
-              aria-label=""
-            >
-              {followers}
-            </Button>
-          </ButtonGroup>
-        </VStack>
-
-        <Flex direction="column" flex={1} justifyContent="center" mb={2}>
-          <Heading textAlign="left" noOfLines={1}>
+      <Flex mx={5}>
+        <Flex direction="column" flex={1} justifyContent="end" mt="3.5rem">
+          <Avatar
+            w="10rem"
+            h="10rem"
+            src={profileSource}
+            my={2}
+            border={`0.35rem solid ${useColorModeValue("white", "#2D3748")}`}
+            position="absolute"
+            bottom="12rem"
+          />
+          <Heading textAlign="left" noOfLines={1} size="xl" mb={1}>
             {name}
           </Heading>
-          <HStack my={2} spacing={1}>
+          <HStack mb={2} spacing={1}>
             {studentStage(universityLevel)}
             {yearTag(year)}
             {collegeByCode(Number(schoolID))}
           </HStack>
-
           <VStack alignItems="left" textAlign="left" spacing={0}>
             <Text as="b" fontSize="sm">
               {degree}
@@ -140,7 +123,7 @@ export default function ProfileWall(): ReactElement {
                   interestName,
                 }) => (
                   <Tag
-                    p={1.5}
+                    px={1.5}
                     variant="subtle"
                     rounded="full"
                     fontSize="sm"
@@ -154,6 +137,22 @@ export default function ProfileWall(): ReactElement {
                 ),
               )}
             </HStack>
+            <ButtonGroup rounded="full" size="sm" isAttached my={2}>
+              <Button
+                rounded="full"
+                leftIcon={<Icon as={IoMdPersonAdd} />}
+                aria-label=""
+              >
+                {friends} Friends
+              </Button>
+              <Button
+                rounded="full"
+                rightIcon={<Icon as={IoMdPerson} />}
+                aria-label=""
+              >
+                {followers} Followers
+              </Button>
+            </ButtonGroup>
           </VStack>
         </Flex>
       </Flex>
