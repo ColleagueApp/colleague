@@ -1,14 +1,14 @@
-/* eslint-disable react/jsx-filename-extension */
 /* eslint "@typescript-eslint/explicit-function-return-type": "off" */
 import React from "react";
 import "./App.css";
 import { ChakraProvider } from "@chakra-ui/react";
 import DefaultLayout from "./pages/layouts/DefaultLayout";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import theme from "./theme";
 
 function App() {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <div className="App">
         <DefaultLayout>
           <ProfilePage />
