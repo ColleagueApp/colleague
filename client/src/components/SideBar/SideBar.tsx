@@ -103,7 +103,7 @@ export default function SideBar({
 }: SideBarProps): ReactElement {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Flex direction="column" position="sticky" maxH="100vh">
+    <Flex direction="column" position="sticky" maxH="100vh" top={0}>
       <IconButton
         variant="ghost"
         aria-label="Dark/Light Mode button for safety"

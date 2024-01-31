@@ -30,6 +30,9 @@ export default function NavBar(): ReactElement {
       bg={useColorModeValue("gray.100", "gray.900")}
       px={4}
       justifyContent="center"
+      position="sticky"
+      top={0}
+      zIndex={99999}
     >
       <Flex
         flex="1"
