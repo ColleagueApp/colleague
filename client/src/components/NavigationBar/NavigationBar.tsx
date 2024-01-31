@@ -16,9 +16,11 @@ import SearchBar from "./SearchBar";
 import FriendsMenu from "./SectionMenus/FriendsMenu";
 import EventMenu from "./SectionMenus/EventMenu";
 import NotificationsMenu from "./SectionMenus/NotificationsMenu";
+import { type NavNotification } from "./SectionMenus/NotificationCard/NotificationCardTypes";
 
 export default function NavBar(): ReactElement {
   const { colorMode, toggleColorMode } = useColorMode();
+  const notifications: NavNotification[] = [];
   const colleagueColor: string = useColorModeValue(
     "colleaguePurple.500",
     "colleaguePurple.300",
@@ -62,9 +64,9 @@ export default function NavBar(): ReactElement {
             rounded="full"
             bg={useColorModeValue("colleaguePurple.300", "colleaguePurple.700")}
           >
-            <FriendsMenu />
+            <FriendsMenu friendRequests={[]} />
             <EventMenu />
-            <NotificationsMenu />
+            <NotificationsMenu notifications={notifications} />
           </HStack>
           <IconButton
             variant="ghost"
@@ -78,7 +80,8 @@ export default function NavBar(): ReactElement {
               )
             }
           />
-          <ProfileMenu profileImage="https://64.media.tumblr.com/dca16e78cc2be80e750eeff2aff26e5a/3fa5888d0886a893-53/s500x750/1ed940c9f8b3e75e5d4b2d36c94cf4e1ee141870.jpg" />
+          {/* TODO: Replace profileImage with AuthContext for it */}
+          <ProfileMenu profileImage="" />
         </HStack>
       </Flex>
     </Flex>

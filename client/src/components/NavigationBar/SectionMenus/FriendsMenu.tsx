@@ -19,32 +19,63 @@ import SectionMenu from "./SectionMenu";
 // - Show time in days or hours, whichever is greater, that request has been sent.
 // - Filter between several categories (Same school, different school, etc.)
 // - Format accept reject buttons using colleague colors instead of green/red.
+interface Friend {
+  firstName: string;
+  lastName: string;
+  profileLink: string;
+  profileID: string;
+}
+function CommonMessage({ friends }: { friends: Friend[] }): ReactElement {
+  let message: string = "No friends in common.";
+  if (friends.length > 0) {
+    const topFriend: Friend = friends[0];
+    message = `${topFriend.firstName} ${topFriend.lastName}${
+      friends.length === 1
+        ? " is a friend in common."
+        : ` and ${friends.length - 1} ${
+            friends.length - 2 === 0 ? "friend" : "friends"
+          } in common.`
+    }`;
+  }
+  return (
+    <HStack spacing={1} fontSize="xs">
+      <Icon as={MdOutlinePeople} />
+      <Text as="cite" fontSize="xs">
+        {message}
+      </Text>
+    </HStack>
+  );
+}
+
 interface RequestCardProps {
-  name: string;
+  profileID: string;
+  firstName: string;
+  lastName: string;
   image: string;
   profileLink: string;
   requestDate: Date;
+  friends: Friend[];
 }
 function RequestCard({
-  name,
+  profileID,
+  firstName,
+  lastName,
   image = "",
   profileLink,
   requestDate,
+  friends,
 }: RequestCardProps): ReactElement {
   return (
-    <MenuItem rounded="2xl" closeOnSelect={false} my={1} p={0}>
+    <MenuItem rounded="2xl" closeOnSelect={false} my={1} p={0} key={profileID}>
       <Flex alignItems="center" p={2} maxW="25rem">
         <Link href={profileLink} _hover={{ textDecoration: "none" }}>
           <Flex alignItems="center">
             <Avatar size="md" src={image} />
             <VStack alignItems="left" spacing={0} mx={2}>
-              <Text as="b">{name}</Text>
-              <HStack spacing={1} fontSize="xs">
-                <Icon as={MdOutlinePeople} />
-                <Text as="cite" fontSize="xs">
-                  Foo2 Bar and others in common
-                </Text>
-              </HStack>
+              <Text as="b">
+                {firstName} {lastName}
+              </Text>
+              <CommonMessage friends={friends} />
               <HStack spacing={1} fontSize="2xs">
                 <Icon as={FaRegClock} />
                 <Text as="cite">{requestDate.toDateString()}</Text>
@@ -75,17 +106,38 @@ function RequestCard({
   );
 }
 
-export default function FriendsMenu(): ReactElement {
+export default function FriendsMenu({
+  friendRequests,
+}: {
+  friendRequests: RequestCardProps[];
+}): ReactElement {
   return (
-    <SectionMenu name="Friend Requests" icon={IoMdPeople}>
-      <Flex p={3} direction="column" scrollBehavior="smooth" overflowY="auto">
-        <RequestCard
-          name="Foo Bar"
-          profileLink="/"
-          image=""
-          requestDate={new Date("2020-01-12")}
-        />
-      </Flex>
+    <SectionMenu
+      name="Friend Requests"
+      icon={IoMdPeople}
+      ghostMessage="No new friend requests"
+    >
+      {friendRequests.map(
+        ({
+          firstName,
+          lastName,
+          image,
+          friends,
+          profileLink,
+          requestDate,
+          profileID,
+        }) => (
+          <RequestCard
+            firstName={firstName}
+            lastName={lastName}
+            image={image}
+            friends={friends}
+            profileLink={profileLink}
+            requestDate={requestDate}
+            profileID={profileID}
+          />
+        ),
+      )}
     </SectionMenu>
   );
 }
