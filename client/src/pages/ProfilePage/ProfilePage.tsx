@@ -67,14 +67,17 @@ export default function ProfilePage(): ReactElement {
               </Tab>
             </TabList>
             <TabPanels>
+              {/* Profile */}
               <TabPanel />
-              <TabPanel>
+              {/* Posts */}
+              <TabPanel px={0}>
                 <Flex direction="column">
                   <PostCard />
                   <Divider my={4} />
                   <PostCard />
                 </Flex>
               </TabPanel>
+              {/* Events */}
             </TabPanels>
           </Tabs>
         </GridItem>

@@ -7,7 +7,6 @@ import {
   HStack,
   Card,
   VStack,
-  AspectRatio,
   Icon,
   Button,
   ButtonGroup,
@@ -86,9 +85,7 @@ export default function ProfileWall(): ReactElement {
   } = getProfilebyID();
   return (
     <Card roundedBottom="2xl" flexDirection="column" flex={1} pb={2}>
-      <AspectRatio ratio={2} maxH="40vh">
-        <Image src={coverSource} h="350px" objectFit="cover" />
-      </AspectRatio>
+      <Image src={coverSource} h="24em" aspectRatio={2} objectFit="cover" />
       <Flex mx={5}>
         <Flex direction="column" flex={1} justifyContent="end" mt="3.5rem">
           <Avatar
@@ -98,7 +95,7 @@ export default function ProfileWall(): ReactElement {
             my={2}
             border={`0.35rem solid ${useColorModeValue("white", "#2D3748")}`}
             position="absolute"
-            bottom="12rem"
+            top="17rem"
           />
           <Heading textAlign="left" noOfLines={1} size="xl" mb={1}>
             {name}
