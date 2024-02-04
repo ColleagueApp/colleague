@@ -1,10 +1,12 @@
 import {
   Avatar,
   Button,
+  ButtonGroup,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
+  Divider,
   Flex,
   HStack,
   Heading,
@@ -20,6 +22,13 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import React, { type ReactElement } from "react";
+import {
+  IoMdHeartEmpty,
+  IoMdHeart,
+  IoMdRepeat,
+  IoMdShareAlt,
+} from "react-icons/io";
+import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
 import {
   collegeByCode,
@@ -41,92 +50,206 @@ function DropMenu(): ReactElement {
   );
 }
 
-function ProfileBubble(): ReactElement {
+const profileInfo = (
+  ID: string,
+): {
+  name: string;
+  lastName: string;
+  profileSrc: string;
+  studentStageID: number;
+  collegeCode: number;
+  yearCode: number;
+} => {
+  if (ID.length > 0) {
+    return {
+      name: "Foo",
+      lastName: "Bar",
+      profileSrc:
+        "https://lh4.googleusercontent.com/proxy/3lnp1cCF96CUx1EC7X215wIBTf6rhQ28WK68leMsSbLIKvAu89bdz-Q0pS5n6EY007uWL-Uc3JNJ-ssyqT56-3GAQ2UYl90FLBypeGLdmukWHNRAZFXcAA07kEaH8lJhRQ",
+      studentStageID: 1,
+      collegeCode: 2939,
+      yearCode: 3,
+    };
+  }
+  return {
+    name: "Foo",
+    lastName: "Bar",
+    profileSrc:
+      "https://lh4.googleusercontent.com/proxy/3lnp1cCF96CUx1EC7X215wIBTf6rhQ28WK68leMsSbLIKvAu89bdz-Q0pS5n6EY007uWL-Uc3JNJ-ssyqT56-3GAQ2UYl90FLBypeGLdmukWHNRAZFXcAA07kEaH8lJhRQ",
+    studentStageID: 1,
+    collegeCode: 2939,
+    yearCode: 3,
+  };
+};
+
+function ProfileBubble({ profileID }: { profileID: string }): ReactElement {
+  // TODO: Use backend to retreive profiles
+  const { name, lastName, profileSrc, studentStageID, collegeCode, yearCode } =
+    profileInfo(profileID);
   return (
     <HStack rounded="full" p={1} pr={3}>
-      <Avatar height="100%" />
+      <Avatar height="100%" src={profileSrc} />
       <VStack alignItems="baseline" spacing={1} ml={1}>
         <Link variant="" href="/" _hover={{ textDecoration: "none" }}>
           <Heading size="md" px={1}>
-            Foo Bar
+            {`${name} ${lastName}`}
           </Heading>
         </Link>
         <HStack spacing={1.5}>
-          {studentStage(1, true, "2xs")}
-          {yearTag(3, true, "2xs")}
-          {collegeByCode(2939, "2xs")}
+          {studentStage(studentStageID, true, "2xs")}
+          {yearTag(yearCode, true, "2xs")}
+          {collegeByCode(collegeCode, "2xs")}
         </HStack>
       </VStack>
     </HStack>
   );
 }
 
-function CommentBubble(): ReactElement {
+interface CommentProps {
+  profileID: string;
+  commentID: string;
+  commentContent: string;
+  commentLikes: number;
+}
+function CommentBubble({
+  commentContent,
+  commentID,
+  commentLikes,
+  profileID,
+}: CommentProps): ReactElement {
+  const { name, lastName, profileSrc, studentStageID, collegeCode, yearCode } =
+    profileInfo(profileID);
   return (
     <Flex
       backgroundColor={useColorModeValue("gray.200", "gray.600")}
       rounded="2xl"
-      mr={3}
+      mt={2}
       p={2}
       pr={3.5}
       flex={1}
       alignItems="center"
+      key={`comment-${commentID}`}
     >
-      <Avatar />
+      <Avatar src={profileSrc} />
       <VStack alignItems="baseline" ml={2} spacing={0}>
         <Link href="/" _hover={{ textDecoration: "none" }}>
           <HStack spacing={2} m={0}>
-            <Heading size="sm">Foo Bar</Heading>
-            {studentStage(1, true, "2xs")}
-            {yearTag(3, true, "2xs")}
-            {collegeByCode(2939, "2xs")}
+            <Heading size="sm">{`${name} ${lastName}`}</Heading>
+            {studentStage(studentStageID, true, "2xs")}
+            {yearTag(yearCode, true, "2xs")}
+            {collegeByCode(collegeCode, "2xs")}
           </HStack>
         </Link>
         <Text fontSize="sm" textAlign="left" noOfLines={2} m={0}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          {commentContent}
         </Text>
+        {commentLikes}
       </VStack>
     </Flex>
   );
 }
 
-export default function PostCard(): ReactElement {
+interface PostCardProps {
+  postID: string;
+  profileID: string;
+  postBody: string;
+  postMediaType?: "image" | undefined;
+  postMediaSrc?: string;
+  postLikeCount: number;
+  postIsLiked?: boolean;
+  postTopComment?: CommentProps | undefined;
+}
+export default function PostCard({
+  postID,
+  profileID,
+  postBody,
+  postMediaType,
+  postMediaSrc,
+  postLikeCount,
+  postIsLiked,
+  postTopComment,
+}: PostCardProps): ReactElement {
+  let media: ReactElement | undefined;
+  if (postMediaType === "image") {
+    media = (
+      <Image
+        my={2}
+        rounded="2xl"
+        aspectRatio={5 / 3}
+        fit="cover"
+        src={postMediaSrc}
+      />
+    );
+  }
   return (
-    <Card rounded="2xl" aspectRatio={4 / 3}>
+    <Card rounded="2xl" key={`post-${postID}`}>
       <CardHeader pb={2.5}>
         <Flex justifyContent="space-between">
-          <ProfileBubble />
+          <ProfileBubble profileID={profileID} />
           <DropMenu />
         </Flex>
       </CardHeader>
       <CardBody p={0} px={5}>
-        <Text textAlign="left" mb={2} fontSize="sm">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+        <Text textAlign="left" px={2} py={2} mb={2} fontSize="md">
+          {postBody}
         </Text>
-        <Image
-          rounded="2xl"
-          fit="cover"
-          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-        />
+        {media}
       </CardBody>
-      <CardFooter p={5} px={5}>
-        <Flex justifyContent="space-between" flex={1}>
-          <CommentBubble />
-          <HStack>
-            <Button colorScheme="purple">Like</Button>
-            <Button colorScheme="purple" variant="outline">
-              Share
+      <CardFooter pt={0} pb={5} px={5} flexDirection="column">
+        <Flex justifyContent="space-between">
+          <ButtonGroup spacing={0} variant="ghost">
+            <Button
+              roundedLeft="xl"
+              roundedRight={0}
+              colorScheme="colleaguePurple"
+              rightIcon={
+                postIsLiked ?? false ? <IoMdHeart /> : <IoMdHeartEmpty />
+              }
+            >
+              {postLikeCount}
             </Button>
-          </HStack>
+            <Divider orientation="vertical" />
+            <Button
+              rounded={0}
+              colorScheme="colleaguePurple"
+              rightIcon={<IoChatboxEllipsesOutline />}
+            >
+              Comments
+            </Button>
+            <Divider orientation="vertical" />
+            <Button
+              roundedRight="xl"
+              roundedLeft={0}
+              colorScheme="colleaguePurple"
+              rightIcon={<IoMdRepeat />}
+            >
+              Repost
+            </Button>
+          </ButtonGroup>
+          <Button
+            colorScheme="colleaguePurple"
+            // variant="outline"
+            rightIcon={<IoMdShareAlt />}
+            variant="ghost"
+          >
+            Share
+          </Button>
         </Flex>
+        {postTopComment !== undefined ? (
+          <CommentBubble
+            profileID={postTopComment.profileID}
+            commentContent={postTopComment.commentContent}
+            commentID={postTopComment.commentID}
+            commentLikes={postTopComment.commentLikes}
+          />
+        ) : undefined}
       </CardFooter>
     </Card>
   );
 }
+PostCard.defaultProps = {
+  postMediaType: undefined,
+  postMediaSrc: "",
+  postIsLiked: false,
+  postTopComment: undefined,
+};

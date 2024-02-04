@@ -45,12 +45,17 @@ export default function ProfilePage(): ReactElement {
         <GridItem colSpan={{ base: 5, lg: 4 }} p={2.5}>
           <ProfileWall />
           <Divider my={4} />
-          <Tabs align="center" variant="soft-rounded" rounded="2xl">
+          <Tabs
+            align="center"
+            variant="soft-rounded"
+            rounded="2xl"
+            colorScheme="colleaguePurple"
+          >
             <TabList>
               <Tab>
                 <HStack spacing={1}>
                   <Icon as={IoMdPerson} />
-                  <Text>Profile</Text>
+                  <Text>Canvas</Text>
                 </HStack>
               </Tab>
               <Tab>
@@ -72,9 +77,28 @@ export default function ProfilePage(): ReactElement {
               {/* Posts */}
               <TabPanel px={0}>
                 <Flex direction="column">
-                  <PostCard />
+                  <PostCard
+                    profileID="19282"
+                    postBody="Hello y'all just posting this piece!"
+                    postID="11233"
+                    postLikeCount={234}
+                    postIsLiked
+                  />
                   <Divider my={4} />
-                  <PostCard />
+                  <PostCard
+                    postBody="Hello y'all just posting this piece!"
+                    profileID="19282"
+                    postID="11233"
+                    postLikeCount={234}
+                    postMediaType="image"
+                    postMediaSrc="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                    postTopComment={{
+                      commentContent: "Nice post!",
+                      commentID: "123456",
+                      commentLikes: 122,
+                      profileID: "98090",
+                    }}
+                  />
                 </Flex>
               </TabPanel>
               {/* Events */}

@@ -44,7 +44,7 @@ interface ProfileWallProps {
   interests: Interests[];
 }
 
-// Helper
+// Helper Dummy function
 function getProfilebyID(): ProfileWallProps {
   return {
     name: "Foo Bar",
@@ -83,8 +83,15 @@ export default function ProfileWall(): ReactElement {
     degree,
     interests,
   } = getProfilebyID();
+  const bgColor: string = useColorModeValue("white", "#2D3748");
   return (
-    <Card roundedBottom="2xl" flexDirection="column" flex={1} pb={2}>
+    <Card
+      roundedBottom="2xl"
+      flexDirection="column"
+      flex={1}
+      pb={2}
+      backgroundColor={bgColor}
+    >
       <Image src={coverSource} h="24em" aspectRatio={2} objectFit="cover" />
       <Flex mx={5}>
         <Flex direction="column" flex={1} justifyContent="end" mt="3.5rem">
@@ -93,7 +100,8 @@ export default function ProfileWall(): ReactElement {
             h="10rem"
             src={profileSource}
             my={2}
-            border={`0.35rem solid ${useColorModeValue("white", "#2D3748")}`}
+            borderWidth="0.35rem"
+            borderColor={bgColor}
             position="absolute"
             top="17rem"
           />

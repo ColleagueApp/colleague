@@ -5,18 +5,14 @@ import {
   CardHeader,
   Flex,
   Heading,
-  Icon,
-  IconButton,
   Link,
   Text,
-  useColorMode,
 } from "@chakra-ui/react";
 import React, {
   type ReactNode,
   type PropsWithChildren,
   type ReactElement,
 } from "react";
-import { BsMoon, BsSun } from "react-icons/bs";
 
 // Dialogue Box template
 interface DialogueBoxProps {
@@ -101,15 +97,8 @@ export default function SideBar({
   trendingHash,
   updateList,
 }: SideBarProps): ReactElement {
-  const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Flex direction="column" position="sticky" maxH="100vh" top={0}>
-      <IconButton
-        variant="ghost"
-        aria-label="Dark/Light Mode button for safety"
-        icon={<Icon as={colorMode === "light" ? BsMoon : BsSun} />}
-        onClick={toggleColorMode}
-      />
+    <Flex direction="column" position="sticky" maxH="100vh" top="4.6rem">
       <UpdatesBox updateList={updateList} />
       <TrendingBox trendingHash={trendingHash} />
     </Flex>
