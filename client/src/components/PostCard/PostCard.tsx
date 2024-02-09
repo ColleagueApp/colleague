@@ -10,13 +10,8 @@ import {
   Flex,
   HStack,
   Heading,
-  Icon,
   Image,
   Link,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
   Text,
   VStack,
   useColorModeValue,
@@ -29,26 +24,11 @@ import {
   IoMdShareAlt,
 } from "react-icons/io";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
-import { BsThreeDots } from "react-icons/bs";
 import {
   collegeByCode,
   studentStage,
   yearTag,
 } from "../../utils/profileHelpers";
-
-function DropMenu(): ReactElement {
-  return (
-    <Menu>
-      <MenuButton>
-        <Icon as={BsThreeDots} />
-      </MenuButton>
-      <MenuList>
-        <MenuItem>Download</MenuItem>
-        <MenuItem>Create a Copy</MenuItem>
-      </MenuList>
-    </Menu>
-  );
-}
 
 const profileInfo = (
   ID: string,
@@ -87,15 +67,15 @@ function ProfileBubble({ profileID }: { profileID: string }): ReactElement {
   const { name, lastName, profileSrc, studentStageID, collegeCode, yearCode } =
     profileInfo(profileID);
   return (
-    <HStack rounded="full" p={1} pr={3}>
-      <Avatar height="100%" src={profileSrc} />
+    <HStack rounded="full" p={1} pr={3} spacing={0.5}>
+      <Avatar src={profileSrc} />
       <VStack alignItems="baseline" spacing={1} ml={1}>
         <Link variant="" href="/" _hover={{ textDecoration: "none" }}>
           <Heading size="md" px={1}>
             {`${name} ${lastName}`}
           </Heading>
         </Link>
-        <HStack spacing={1.5}>
+        <HStack spacing={1} pl={1}>
           {studentStage(studentStageID, true, "2xs")}
           {yearTag(yearCode, true, "2xs")}
           {collegeByCode(collegeCode, "2xs")}
@@ -186,7 +166,6 @@ export default function PostCard({
       <CardHeader pb={2.5}>
         <Flex justifyContent="space-between">
           <ProfileBubble profileID={profileID} />
-          <DropMenu />
         </Flex>
       </CardHeader>
       <CardBody p={0} px={5}>
