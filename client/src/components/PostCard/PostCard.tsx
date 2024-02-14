@@ -69,7 +69,7 @@ function ProfileBubble({ profileID }: { profileID: string }): ReactElement {
   return (
     <HStack rounded="full" p={1} pr={3} spacing={0.5}>
       <Avatar src={profileSrc} />
-      <VStack alignItems="baseline" spacing={1} ml={1}>
+      <VStack alignItems="baseline" spacing={1} ml={1} textAlign="left">
         <Link variant="" href="/" _hover={{ textDecoration: "none" }}>
           <Heading size="md" px={1}>
             {`${name} ${lastName}`}
@@ -111,7 +111,7 @@ function CommentBubble({
       key={`comment-${commentID}`}
     >
       <Avatar src={profileSrc} />
-      <VStack alignItems="baseline" ml={2} spacing={0}>
+      <VStack alignItems="baseline" ml={2} spacing={0} textAlign="left">
         <Link href="/" _hover={{ textDecoration: "none" }}>
           <HStack spacing={2} m={0}>
             <Heading size="sm">{`${name} ${lastName}`}</Heading>
