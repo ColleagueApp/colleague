@@ -129,7 +129,7 @@ function CommentBubble({
   );
 }
 
-interface PostCardProps {
+export interface PostCardProps {
   postID: string;
   profileID: string;
   postBody: string;

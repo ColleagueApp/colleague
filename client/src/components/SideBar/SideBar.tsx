@@ -4,6 +4,7 @@ import {
   CardBody,
   CardHeader,
   Flex,
+  type FlexProps,
   Heading,
   Link,
   Text,
@@ -17,9 +18,15 @@ import React, {
 // Dialogue Box template
 interface DialogueBoxProps {
   title: string;
+  direction?: FlexProps["direction"];
+  alignItems?: FlexProps["alignItems"];
+  justifyContent?: FlexProps["justifyContent"];
 }
 function DialogueBox({
   title,
+  direction,
+  alignItems,
+  justifyContent,
   children,
 }: PropsWithChildren<DialogueBoxProps>): ReactElement {
   return (
@@ -30,11 +37,22 @@ function DialogueBox({
         </Heading>
       </CardHeader>
       <CardBody px={3} py={1}>
-        {children}
+        <Flex
+          direction={direction}
+          alignItems={alignItems}
+          justifyContent={justifyContent}
+        >
+          {children}
+        </Flex>
       </CardBody>
     </Card>
   );
 }
+DialogueBox.defaultProps = {
+  direction: "row",
+  alignItems: "center",
+  justifyContent: "center",
+};
 
 // TrendingBox
 interface HashFormat {
@@ -56,8 +74,12 @@ function TrendingBox({
     ),
   );
   return (
-    <DialogueBox title="Trending near you">
-      <Flex direction="column">{topicTags}</Flex>
+    <DialogueBox
+      title="Trending near you"
+      direction="column"
+      alignItems="flex-start"
+    >
+      {topicTags}
     </DialogueBox>
   );
 }
@@ -83,11 +105,7 @@ function UpdatesBox({
     ),
   );
 
-  return (
-    <DialogueBox title="Updates">
-      <Flex direction="column">{friendStatus}</Flex>
-    </DialogueBox>
-  );
+  return <DialogueBox title="Updates">{friendStatus}</DialogueBox>;
 }
 interface SideBarProps {
   trendingHash: HashFormat[];

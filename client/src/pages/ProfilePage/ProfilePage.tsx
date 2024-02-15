@@ -3,21 +3,25 @@ import {
   Flex,
   Grid,
   GridItem,
-  HStack,
-  Icon,
-  Tab,
   TabList,
-  TabPanel,
   TabPanels,
   Tabs,
-  Text,
 } from "@chakra-ui/react";
-import { IoMdPerson, IoMdCalendar } from "react-icons/io";
-import { PiSignpostFill } from "react-icons/pi";
 import React, { type ReactElement } from "react";
 import SideBar from "../../components/SideBar/SideBar";
 import ProfileWall from "../../components/ProfileWall/ProfileWall";
-import PostCard from "../../components/PostCard/PostCard";
+import {
+  PostsPanel,
+  PostsTab,
+} from "../../components/ProfileTabs/PostsTab/PostsTab";
+import {
+  CanvasPanel,
+  CanvasTab,
+} from "../../components/ProfileTabs/CanvasTab/CanvasTab";
+import {
+  EventsPanel,
+  EventsTab,
+} from "../../components/ProfileTabs/EventsTab/EventsTab";
 
 const testTrending: Array<{ topic: string; postCount: number; link: string }> =
   [
@@ -52,56 +56,17 @@ export default function ProfilePage(): ReactElement {
             colorScheme="colleaguePurple"
           >
             <TabList>
-              <Tab>
-                <HStack spacing={1}>
-                  <Icon as={IoMdPerson} />
-                  <Text>Canvas</Text>
-                </HStack>
-              </Tab>
-              <Tab>
-                <HStack spacing={1}>
-                  <Icon as={PiSignpostFill} />
-                  <Text>Posts</Text>
-                </HStack>
-              </Tab>
-              <Tab>
-                <HStack spacing={1}>
-                  <Icon as={IoMdCalendar} />
-                  <Text>Events</Text>
-                </HStack>
-              </Tab>
+              <CanvasTab />
+              <PostsTab />
+              <EventsTab />
             </TabList>
             <TabPanels>
               {/* Profile */}
-              <TabPanel />
+              <CanvasPanel />
               {/* Posts */}
-              <TabPanel px={0}>
-                <Flex direction="column">
-                  <PostCard
-                    profileID="19282"
-                    postBody="Hello y'all just posting this piece!"
-                    postID="11233"
-                    postLikeCount={234}
-                    postIsLiked
-                  />
-                  <Divider my={4} />
-                  <PostCard
-                    postBody="Hello y'all just posting this piece!"
-                    profileID="19282"
-                    postID="11233"
-                    postLikeCount={234}
-                    postMediaType="image"
-                    postMediaSrc="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                    postTopComment={{
-                      commentContent: "Nice post!",
-                      commentID: "123456",
-                      commentLikes: 122,
-                      profileID: "98090",
-                    }}
-                  />
-                </Flex>
-              </TabPanel>
+              <PostsPanel />
               {/* Events */}
+              <EventsPanel />
             </TabPanels>
           </Tabs>
         </GridItem>
