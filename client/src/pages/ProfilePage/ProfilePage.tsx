@@ -23,11 +23,15 @@ import {
   EventsTab,
 } from "../../components/ProfileTabs/EventsTab/EventsTab";
 
-const testTrending: Array<{ topic: string; postCount: number; link: string }> =
-  [
-    { topic: "ASAP", postCount: 84950, link: "./" },
-    { topic: "Jamaica", postCount: 9348, link: "./" },
-  ];
+const testTrending: Array<{
+  topic: string;
+  hashID: string;
+  postCount: number;
+  link: string;
+}> = [
+  { hashID: "2394", topic: "ASAP", postCount: 84950, link: "./" },
+  { hashID: "2984", topic: "Jamaica", postCount: 9348, link: "./" },
+];
 const testUpdates: Array<{
   userName: string;
   name: string;
@@ -61,11 +65,8 @@ export default function ProfilePage(): ReactElement {
               <EventsTab />
             </TabList>
             <TabPanels>
-              {/* Profile */}
               <CanvasPanel />
-              {/* Posts */}
               <PostsPanel />
-              {/* Events */}
               <EventsPanel />
             </TabPanels>
           </Tabs>

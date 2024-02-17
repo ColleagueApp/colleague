@@ -14,6 +14,8 @@ import {
   TagLabel,
   type ThemeTypings,
   useColorModeValue,
+  IconButton,
+  Stack,
 } from "@chakra-ui/react";
 import React, { type ReactElement } from "react";
 import { IoMdPerson, IoMdPersonAdd } from "react-icons/io";
@@ -128,12 +130,12 @@ export default function ProfileWall(): ReactElement {
                   interestName,
                 }) => (
                   <Tag
+                    key={interestID}
                     px={1.5}
                     variant="subtle"
                     rounded="full"
                     fontSize="sm"
                     colorScheme={interestColorScheme}
-                    id={interestID}
                   >
                     <TagLabel fontSize="xs">
                       {interestName} {interestEmoji}
@@ -142,22 +144,30 @@ export default function ProfileWall(): ReactElement {
                 ),
               )}
             </HStack>
-            <ButtonGroup rounded="full" size="sm" isAttached my={2}>
-              <Button
-                rounded="full"
-                leftIcon={<Icon as={IoMdPersonAdd} />}
-                aria-label=""
-              >
-                {friends} Friends
-              </Button>
-              <Button
-                rounded="full"
-                rightIcon={<Icon as={IoMdPerson} />}
-                aria-label=""
-              >
-                {followers} Followers
-              </Button>
-            </ButtonGroup>
+            <Stack direction="row">
+              <ButtonGroup size="sm" my={2} isAttached>
+                <IconButton
+                  aria-label="Add friend"
+                  px={4}
+                  borderWidth={1}
+                  icon={<IoMdPersonAdd />}
+                />
+                <Button aria-label="" variant="outline">
+                  {friends} Friends
+                </Button>
+              </ButtonGroup>
+              <ButtonGroup size="sm" my={2} isAttached>
+                <IconButton
+                  aria-label="Follow?"
+                  px={4}
+                  borderWidth={1}
+                  icon={<Icon as={IoMdPerson} />}
+                />
+                <Button aria-label="" variant="outline">
+                  {followers} Followers
+                </Button>
+              </ButtonGroup>
+            </Stack>
           </VStack>
         </Flex>
       </Flex>

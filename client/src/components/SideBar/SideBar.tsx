@@ -56,6 +56,7 @@ DialogueBox.defaultProps = {
 
 // TrendingBox
 interface HashFormat {
+  hashID: string;
   topic: string;
   postCount: number;
   link: string;
@@ -66,8 +67,8 @@ function TrendingBox({
   trendingHash: HashFormat[];
 }): ReactElement {
   const topicTags: ReactNode[] = trendingHash.map(
-    ({ topic, postCount, link }): ReactNode => (
-      <Link href={link} textAlign="left" pb={2}>
+    ({ topic, hashID, postCount, link }): ReactNode => (
+      <Link key={`hashtag-${hashID}`} href={link} textAlign="left" pb={2}>
         <Heading fontSize="xs">#{topic}</Heading>
         <Text fontSize="xs">{postCount} posts in the last hour </Text>
       </Link>
@@ -98,7 +99,7 @@ function UpdatesBox({
 }): ReactElement {
   const friendStatus: ReactNode[] = updateList.map(
     ({ userName, name, profilePic, profileID }): ReactNode => (
-      <Link href={`./${profileID}`}>
+      <Link key={`friendStatus${profileID}`} href={`./${profileID}`}>
         <Avatar name={name} src={profilePic} />
         <Text fontSize="xs">{userName}</Text>
       </Link>

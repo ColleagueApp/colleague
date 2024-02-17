@@ -1,6 +1,6 @@
 import React, { type ReactElement } from "react";
 import { PiSignpostFill } from "react-icons/pi";
-import { Flex, Divider } from "@chakra-ui/react";
+import { Flex, Divider, Box } from "@chakra-ui/react";
 import PostCard, { type PostCardProps } from "../../PostCard/PostCard";
 import { ProfilePanel, ProfileTab } from "../ProfileTabs";
 
@@ -17,7 +17,7 @@ function fetchPosts(): PostCardProps[] {
     {
       postBody: "Hello y'all just posting this piece!",
       profileID: "19282",
-      postID: "11233",
+      postID: "11234",
       postLikeCount: 234,
       postMediaType: "image",
       postMediaSrc:
@@ -52,7 +52,7 @@ export function PostsPanel(): ReactElement {
               postMediaType,
               postTopComment,
             }: PostCardProps) => (
-              <>
+              <Box key={`post-${postID}`}>
                 <PostCard
                   postBody={postBody}
                   postID={postID}
@@ -64,7 +64,7 @@ export function PostsPanel(): ReactElement {
                   postTopComment={postTopComment}
                 />
                 <Divider my={4} colorScheme="colleaguePurple" />
-              </>
+              </Box>
             ),
           )}
         </Flex>
