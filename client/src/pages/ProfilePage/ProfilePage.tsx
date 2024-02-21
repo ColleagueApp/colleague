@@ -48,7 +48,7 @@ const testUpdates: Array<{
 
 export default function ProfilePage(): ReactElement {
   return (
-    <Flex flex={1} direction="column" justifyContent="center" maxW="133vh">
+    <Flex flex={1} direction="column" justifyContent="center" maxW="6xl">
       <Grid templateColumns="repeat(5, 1fr)" minH="100vh" flex={1}>
         <GridItem colSpan={{ base: 5, lg: 4 }} p={2.5}>
           <ProfileWall />

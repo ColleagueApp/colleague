@@ -40,7 +40,7 @@ export default function NavBar(): ReactElement {
         alignItems="center"
         justifyContent="space-between"
         minW=""
-        maxW="133vh"
+        maxW="6xl"
       >
         <Box>
           <Link href="/">

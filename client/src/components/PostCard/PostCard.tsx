@@ -103,7 +103,7 @@ function CommentBubble({
     <Flex
       backgroundColor={useColorModeValue("gray.200", "gray.600")}
       rounded="2xl"
-      mt={2}
+      my={2}
       p={2}
       pr={3.5}
       flex={1}
@@ -163,20 +163,20 @@ export default function PostCard({
   }
   return (
     <Card rounded="2xl" key={`post-${postID}`}>
-      <CardHeader pb={2.5}>
+      <CardHeader pb={2} p={4} px={5}>
         <Flex justifyContent="space-between">
           <ProfileBubble profileID={profileID} />
         </Flex>
       </CardHeader>
-      <CardBody p={0} px={5}>
-        <Text textAlign="left" px={2} py={2} mb={2} fontSize="md">
+      <CardBody p={0} px={4}>
+        <Text textAlign="left" px={2} py={2} fontSize="md">
           {postBody}
         </Text>
         {media}
       </CardBody>
-      <CardFooter pt={0} pb={5} px={5} flexDirection="column">
+      <CardFooter pt={0} pb={2} px={4} flexDirection="column">
         <Flex justifyContent="space-between">
-          <ButtonGroup spacing={0} variant="ghost">
+          <ButtonGroup m={0} spacing={0} variant="ghost">
             <Button
               roundedLeft="xl"
               roundedRight={0}
