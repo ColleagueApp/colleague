@@ -1,25 +1,34 @@
 import { useEffect } from "react";
-import { useUser, User } from "./useUser";
-import { useLocalStorage } from "./useLocalStorage";
+import { useUser, type User } from "./useUser";
+import useLocalStorage from "./useLocalStorage";
 
-export const useAuth = () => {
+const useAuth = (): {
+  user: User | null;
+  login: (user: User) => void;
+  logout: () => void;
+} => {
   const { user, addUser, removeUser } = useUser();
   const { getItem } = useLocalStorage();
 
   useEffect(() => {
-    const user = getItem("user");
-    if (user) {
-      addUser(JSON.parse(user));
+    const localUser = getItem("user");
+    if (localUser !== null) {
+      // TODO: "Add a check for the user's auth token here"
+      addUser(JSON.parse(localUser));
     }
   }, []);
 
-  const login = (user: User) => {
-    addUser(user);
+  const login = (userInfo: User): void => {
+    // TODO: "Add an actual login function here"
+    addUser(userInfo);
   };
 
-  const logout = () => {
+  const logout = (): void => {
+    // TODO: "Add an actual logout function here"
     removeUser();
   };
 
   return { user, login, logout };
 };
+
+export default useAuth;
