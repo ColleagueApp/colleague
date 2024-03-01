@@ -5,14 +5,16 @@ import { ChakraProvider } from "@chakra-ui/react";
 import DefaultLayout from "./pages/layouts/DefaultLayout";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import theme from "./theme";
+import { AuthProvider } from "./store/AuthContext";
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <div className="App">
-        <DefaultLayout>
-          <ProfilePage />
-          {/* <Box alignItems="center" justifyContent="center" flex={1}>
+      <AuthProvider>
+        <div className="App">
+          <DefaultLayout>
+            <ProfilePage />
+            {/* <Box alignItems="center" justifyContent="center" flex={1}>
             <Text fontSize="3xl">
               [Insert future
               <Code
@@ -27,8 +29,9 @@ function App() {
               app here]
             </Text>
           </Box> */}
-        </DefaultLayout>
-      </div>
+          </DefaultLayout>
+        </div>
+      </AuthProvider>
     </ChakraProvider>
   );
 }
