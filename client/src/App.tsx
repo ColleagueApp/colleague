@@ -1,7 +1,9 @@
 /* eslint "@typescript-eslint/explicit-function-return-type": "off" */
 import React from "react";
 import "./App.css";
-import { ChakraProvider, Text, Code } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
+import DefaultLayout from "./pages/layouts/DefaultLayout";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import theme from "./theme";
 import { AuthProvider } from "./store/AuthContext";
 
@@ -10,16 +12,24 @@ function App() {
     <ChakraProvider theme={theme}>
       <AuthProvider>
         <div className="App">
-          <header className="App-header">
-            <Text>
+          <DefaultLayout>
+            <ProfilePage />
+            {/* <Box alignItems="center" justifyContent="center" flex={1}>
+            <Text fontSize="3xl">
               [Insert future
-              <Code fontSize="" fontWeight="bold" color="rgb(154, 87, 205)">
+              <Code
+                bg="gray.900"
+                fontSize=""
+                fontWeight="bold"
+                color="rgb(154, 87, 205)"
+              >
                 {" "}
                 Colleague{" "}
               </Code>
               app here]
             </Text>
-          </header>
+          </Box> */}
+          </DefaultLayout>
         </div>
       </AuthProvider>
     </ChakraProvider>

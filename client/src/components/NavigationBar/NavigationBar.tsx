@@ -30,6 +30,9 @@ export default function NavBar(): ReactElement {
       bg={useColorModeValue("gray.100", "gray.900")}
       px={4}
       justifyContent="center"
+      position="sticky"
+      top={0}
+      zIndex={99999}
     >
       <Flex
         flex="1"
@@ -37,7 +40,7 @@ export default function NavBar(): ReactElement {
         alignItems="center"
         justifyContent="space-between"
         minW=""
-        maxW="133vh"
+        maxW="6xl"
       >
         <Box>
           <Link href="/">

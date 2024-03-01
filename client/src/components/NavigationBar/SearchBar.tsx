@@ -1,7 +1,6 @@
 import { SearchIcon } from "@chakra-ui/icons";
 import {
   useColorModeValue,
-  Flex,
   InputGroup,
   Input,
   InputRightAddon,
@@ -14,18 +13,16 @@ export default function SearchBar(): ReactElement {
     "colleaguePurple.300",
   );
   return (
-    <Flex>
-      <InputGroup rounded="full" variant="filled" maxW="1000px" w="lg">
-        <Input
-          placeholder="Take me to my next adventure"
-          rounded="full"
-          bg={useColorModeValue("gray.200", "gray.800")}
-        />
-        <InputRightAddon rounded="full">
-          <SearchIcon color={colleagueColor} />
-        </InputRightAddon>
-        {/* TODO: Add search suggestions */}
-      </InputGroup>
-    </Flex>
+    <InputGroup rounded="full" variant="filled" flex={1} mx={10}>
+      <Input
+        placeholder="Take me to my next adventure"
+        rounded="full"
+        bg={useColorModeValue("gray.200", "gray.800")}
+      />
+      <InputRightAddon rounded="full">
+        <SearchIcon color={colleagueColor} />
+      </InputRightAddon>
+      {/* TODO: Add search suggestions */}
+    </InputGroup>
   );
 }
